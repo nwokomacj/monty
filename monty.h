@@ -1,13 +1,17 @@
-#ifndef monty_h
-#define monty_h
+#ifndef MONTY_H
+#define MONTY_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
-#include <fcntl.h>
 
+#define NPTRS(size) (sizeof(void *) * (size))
+
+typedef unsigned int uint;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -20,9 +24,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -35,10 +39,57 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, uint line_number);
 } instruction_t;
 
+typedef struct state
+{
+	int stack_mode;
+	size_t length;
+	uint line_no;
+	void *buffer;
+	void *lines;
+	void *tokens;
+} state;
+
 char *read_file(int fd);
+char **split_lines(char *buffer);
+char **get_tokens(char *line);
+
+int print_node(stack_t *node, int ascii_val);
+int print_nodes(stack_t *node, int ascii_val);
+void free_stack(stack_t *node);
+
+
+void push(stack_t **stack, int value);
+void enqueue(stack_t **stack, int value);
+void stack_mode(void);
+void queue_mode(void);
+
+
+void pop(stack_t **stack, uint line_number);
+void pint(stack_t **stack, uint line_number);
+void pall(stack_t **stack, uint line_number);
+void pchar(stack_t **stack, uint line_number);
+void pstring(stack_t **stack, uint line_number);
+void swap(stack_t **stack, uint line_number);
+void nop(stack_t **stack, uint line_number);
+void add(stack_t **stack, uint line_number);
+void sub(stack_t **stack, uint line_number);
+void mul(stack_t **stack, uint line_number);
+void div(stack_t **stack, uint line_number);
+void mod(stack_t **stack, uint line_number);
+void rotl(stack_t **stack, uint line_number);
+void rotr(stack_t **stack, uint line_number);
+
+
+
+extern state *state;
+extern stack *stack;
+
+
+
+
 
 #endif
