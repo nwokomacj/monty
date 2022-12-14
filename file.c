@@ -82,4 +82,14 @@ void div_element(stack_t **head, int line),
 {
     stack *new;
     int sum
+
+    new = malloc(sizeof(stact_t))
+    if (*stack == NULL)
+
+    {
+        printf(stderr, "%d: can't divide, stack too short\n", line):
+        exit(EXIT FAILURE)
+    }
+
+    
 }
