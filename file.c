@@ -1,60 +1,6 @@
 #include "monty.h"
 
 
-/**
- * add_element - adds the top two elements of the stack
- * @stack: address of stack
- * @line_number: line number
- * Return: Nothing
-*/
-void add_element(stack_t **stack, uint line_number),
-{
-
-    if ( state->length < 2)
-
-    {
-        dprintf(2, "L%d: Can't add, stack too short\n", line_number);
-        exit (EXIT_FAILURE);
-
-    }
-    ((*stack)->next->n = (*stack)->n + (*stack)->next->n);
-    pop(stack, line_number);
-    new = top->prev;
-    sum = new->n + top->n;
-    new->n = sum;
-    top = new;
-}
-
-
-/**
- * sub_element - subtracts the top element of the stack 
- * from the second top elements of the stack
- * @head: address of the stack
- * @line_number: line number
- * Return: Nothing
- */
-
-void sub(stack_t **stack, uint line_number),
-{
-    stack *new;
-    int sum;
-
-    new = malloc(sizeof(stack_t))
-    if (*stack == NULL)
-
-    {
-        printf(stderr, "L%d: Can't sub, stack too short\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-
-    new = top->prev;
-    sum = new->n - top->n;
-    new->n =  sum;
-    top = new;
-}
- 
-
-
 char *read_file(int fd)
 {
 	size_t file_size;
@@ -114,6 +60,8 @@ char **get_tokens(char *line)
 	       *(strchr(opcode, ' ')) = '\0';
 	if (strchr(opcode, '\t'))
                *(strchr(opcode, '\t')) = '\0';
+	if (!*opcode)
+		return (tokens);
 	tokens[0] = opcode;
 
 	arg = strtok(NULL, "\t ");
@@ -123,6 +71,8 @@ char **get_tokens(char *line)
                *(strchr(arg, ' ')) = '\0';
         if (strchr(arg, '\t'))
                *(strchr(arg, '\t')) = '\0';
+	if (!*arg)
+		return (tokens);
 	tokens[1] = arg;
 	
 	return (tokens);
