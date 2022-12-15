@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <ctype.h>
 
 #define NPTRS(size) (sizeof(void *) * (size))
 
@@ -46,12 +47,13 @@ typedef struct instruction_s
 typedef struct state
 {
 	int stack_mode;
+	stack_t *stack;
 	size_t length;
-	uint line_no;
+	uint lineno;
 	void *buffer;
 	void *lines;
 	void *tokens;
-} state;
+} state_t;
 
 char *read_file(int fd);
 char **split_lines(char *buffer);
@@ -59,11 +61,20 @@ char **get_tokens(char *line);
 
 int print_node(stack_t *node, int ascii_val);
 int print_nodes(stack_t *node, int ascii_val);
-void free_stack(stack_t *node);
 
 
-void push(stack_t **stack, int value);
-void enqueue(stack_t **stack, int value);
+void cleanup(void);
+void exit_on_malloc_fail(void *mem);
+void monty_exit(int EXIT_STATUS);
+
+stack_t *add_node_bot(stack_t **head, int n);
+stack_t *add_node_top(stack_t **head, int n);
+stack_t *peek_top();
+stack_t *peek_bot();
+
+
+
+void push(stack_t **stack, char *value);
 void stack_mode(void);
 void queue_mode(void);
 
@@ -78,18 +89,12 @@ void nop(stack_t **stack, uint line_number);
 void add(stack_t **stack, uint line_number);
 void sub(stack_t **stack, uint line_number);
 void mul(stack_t **stack, uint line_number);
-void div(stack_t **stack, uint line_number);
+void div_(stack_t **stack, uint line_number);
 void mod(stack_t **stack, uint line_number);
 void rotl(stack_t **stack, uint line_number);
 void rotr(stack_t **stack, uint line_number);
 
 
-
-extern state *state;
-extern stack *stack;
-
-
-
-
+extern state_t state;
 
 #endif
