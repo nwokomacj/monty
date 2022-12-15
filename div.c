@@ -1,28 +1,29 @@
+#include "monty.h"
+
 /**
-  * div_element - divides the second element by the first from the stack
-  * @head: address of the stack
-  * @line: line number
+  * div - divides the second element by the first from the stack
+  * @stack: address of the stack
+  * @line_line: line number
   * Return: Nothing
  */
-void div_element(stack_t **head, int line),
+void div(stack_t **stack, uint line_number)
 {
-    stack *new;
-    int sum
+    stack_t *first, *second;
+    int sum;
 
-    new = malloc(sizeof(stact_t))
-    if (*stack == NULL)
+    
+    if (state.length < 2)
 
     {
-        printf(stderr, "L%d: can't div, stack too short\n", line);
-        exit(EXIT_FAILURE)
+        printf(stderr, "L%d: can't div, stack too short\n", line_number);
+        monty_exit(EXIT_FAILURE);
     }
 
-   if (top->n == 0)
-   {
-    printf(stderr, "L%d: division by zero\n", line);
-   }
-   new = top->prev;
-   sum = new->n / top->n;
-   top = new;
+
+    first = *stack;
+    second = first->next;
+    sum = second->n / first->n;
+    second->n = sum;
+    pop(stack, line_number)
 
 }
