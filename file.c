@@ -3,27 +3,25 @@
 
 /**
  * add_element - adds the top two elements of the stack
- * @head: address of stack
- * @line: line number
+ * @stack: address of stack
+ * @line_number: line number
  * Return: Nothing
 */
-void add_element(stack_t **head, int line),
+void add_element(stack_t **stack, uint line_number),
 {
-    stack_t *new; 
-    int sum;
 
-    new = malloc(sizeof(stack_t))
-    if (*stack == NULL)
+    if ( state->length < 2)
 
     {
-        printf(stderr, "%d: Can't add, stack too short\n", line);
-        exit (EXIT FAILURE);
+        dprintf(2, "L%d: Can't add, stack too short\n", line_number);
+        exit (EXIT_FAILURE);
 
     }
-
+    ((*stack)->next->n = (*stack)->n + (*stack)->next->n);
+    pop(stack, line_number);
     new = top->prev;
     sum = new->n + top->n;
-    new-> = sum;
+    new->n = sum;
     top = new;
 }
 
@@ -32,11 +30,11 @@ void add_element(stack_t **head, int line),
  * sub_element - subtracts the top element of the stack 
  * from the second top elements of the stack
  * @head: address of the stack
- * @line: line number
+ * @line_number: line number
  * Return: Nothing
  */
 
-void sub_element(stack_t **head, int line),
+void sub(stack_t **stack, uint line_number),
 {
     stack *new;
     int sum;
@@ -45,37 +43,16 @@ void sub_element(stack_t **head, int line),
     if (*stack == NULL)
 
     {
-        printf(stderr, "%d: Can't sub., stack too short\n", line):
-        exit(EXIT FAILURE);
+        printf(stderr, "L%d: Can't sub, stack too short\n", line_number);
+        exit(EXIT_FAILURE);
     }
 
     new = top->prev;
     sum = new->n - top->n;
-    new-> =  sum;
+    new->n =  sum;
     top = new;
 }
  
- /**
-  * div_element - divides the second element by the first from the stack
-  * @head: address of the stack
-  * @line: line number
-  * Return: Mothing
- */
-void div_element(stack_t **head, int line),
-{
-    stack *new;
-    int sum
-
-    new = malloc(sizeof(stact_t))
-    if (*stack == NULL)
-
-    {
-        printf(stderr, "%d: can't divide, stack too short\n", line):
-        exit(EXIT FAILURE)
-    }
-
-    
-}
 
 
 char *read_file(int fd)
@@ -151,3 +128,4 @@ char **get_tokens(char *line)
 	return (tokens);
 }
 
+ 
