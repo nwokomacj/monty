@@ -1,13 +1,7 @@
 #include "monty.h"
 
 state_t state = {
-	.stack_mode = 1,
-	.stack = NULL,
-	.lineno = 1,
-	.length = 0,
-	.buffer = NULL,
-	.lines = NULL,
-	.tokens = NULL
+	1, NULL, 0, 1, NULL, NULL. NULL
 };
 
 int handle_opcode(char *opcode, char *value)
@@ -16,6 +10,12 @@ int handle_opcode(char *opcode, char *value)
 	instruction_t handlers[] = {
 		{"pall", pall},
 		{"pint", pint},
+		{"add", add},
+		{"div", div_},
+		{"mul", mul},
+		{"sub", sub},
+		{"pop", pop},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 	
@@ -41,7 +41,7 @@ int handle_opcode(char *opcode, char *value)
 int main(int ac, char **av)
 {
 	int fd;
-	char *buffer, **lines, *line, **tokens,
+	char *buffer, **lines, **tokens,
 		*opcode, *arg;
 
 	if (ac != 2)
@@ -67,7 +67,6 @@ int main(int ac, char **av)
 		opcode = tokens[0];
 		arg = tokens[1];
 		free(tokens);
-		printf("opcode -> %s, value -> %s\n", opcode, arg);
 		if (!opcode)
 			continue;
 		if (!handle_opcode(opcode, arg))
@@ -77,4 +76,5 @@ int main(int ac, char **av)
 		}
 	}
 	monty_exit(EXIT_SUCCESS);
+	return (0);
 }

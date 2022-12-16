@@ -16,7 +16,7 @@ void add(stack_t **stack, uint line_number)
     if (state.length < 2)
 
     {
-        printf(stderr, "L%d: can't add, stack too short\n", line_number);
+        dprintf(2, "L%d: can't add, stack too short\n", line_number);
         monty_exit(EXIT_FAILURE);
     }
 
@@ -25,7 +25,7 @@ void add(stack_t **stack, uint line_number)
     second = first->next;
     sum = first->n + second->n;
     second->n = sum;
-    pop(stack, line_number)
+    pop(stack, line_number);
 }
 
 
@@ -47,7 +47,7 @@ void sub(stack_t **stack, uint line_number)
     if (state.length < 2)
 
     {
-        printf(stderr, "L%d: can't sub, stack too short\n", line_number);
+        dprintf(2, "L%d: can't sub, stack too short\n", line_number);
         monty_exit(EXIT_FAILURE);
     }
 
@@ -56,5 +56,5 @@ void sub(stack_t **stack, uint line_number)
     second = first->next;
     sum = second->n - first->n;
     second->n = sum;
-    pop(stack, line_number)
+    pop(stack, line_number);
 }

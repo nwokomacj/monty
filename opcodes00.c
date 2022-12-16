@@ -15,6 +15,7 @@ void push(stack_t **stack, char *value)
 		}
 	if (throw)
 	{
+		
 		dprintf(2, "L%u: usage: push integer\n", state.lineno);
 		monty_exit(EXIT_FAILURE);
 	}
@@ -38,6 +39,30 @@ void pall(stack_t **stack, uint lineno)
 		printf("%i\n", temp->n);
 		temp = temp->next;
 	}
+}
+
+/**
+ * pop - removes the top element of the stack
+ * @stack: address of stack
+ * @lineno: line number
+ * Return: Nothing
+ */
+void pop(stack_t **stack, uint lineno)
+{
+	stack_t *temp;
+
+	if (state.length == 0)
+	
+	{
+		dprintf(2, "L%u: can't pop an empty stack\n", lineno);
+		monty_exit(EXIT_FAILURE);
+	}
+
+	temp = (*stack)->next;
+	free(*stack);
+	if (temp != NULL)
+		temp->prev = NULL;
+	*stack = temp;
 }
 
 void pint(stack_t **stack, uint lineno)
