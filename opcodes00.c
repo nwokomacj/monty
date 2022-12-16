@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * push - push a new value to the stack
+ * @stack: the stack
+ * @value: the value
+ * Return: nothing
+ */
 void push(stack_t **stack, char *value)
 {
 	int i, throw = 0;
@@ -15,7 +21,7 @@ void push(stack_t **stack, char *value)
 		}
 	if (throw)
 	{
-		
+
 		dprintf(2, "L%u: usage: push integer\n", state.lineno);
 		monty_exit(EXIT_FAILURE);
 	}
@@ -27,6 +33,12 @@ void push(stack_t **stack, char *value)
 	state.length++;
 }
 
+/**
+ * pall - print all values in the stack
+ * @stack: the stack
+ * @lineno: the opcode's line numbef
+ * Return: nothing
+ */
 void pall(stack_t **stack, uint lineno)
 {
 	stack_t *temp;
@@ -52,7 +64,7 @@ void pop(stack_t **stack, uint lineno)
 	stack_t *temp;
 
 	if (state.length == 0)
-	
+
 	{
 		dprintf(2, "L%u: can't pop an empty stack\n", lineno);
 		monty_exit(EXIT_FAILURE);
@@ -63,15 +75,34 @@ void pop(stack_t **stack, uint lineno)
 	if (temp != NULL)
 		temp->prev = NULL;
 	*stack = temp;
+	state.length--;
 }
 
+/**
+ * pint - prints the top element of the stack
+ * @stack: address of stack
+ * @lineno: line number
+ * Return: Nothing
+ */
 void pint(stack_t **stack, uint lineno)
 {
 	if (state.length == 0)
 	{
-		dprintf(2, "L%u: can't pint, stack empty\n", state.lineno);
+		dprintf(2, "L%u: can't pint, stack empty\n", lineno);
 		monty_exit(EXIT_FAILURE);
 	}
 
 	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * nop - does nothing
+ * @stack: address of stack
+ * @lineno: line number
+ * Return: Nothing
+ */
+void nop(stack_t **stack, uint lineno)
+{
+	(void)stack;
+	(void)lineno;
 }

@@ -61,31 +61,22 @@ char *read_file(int fd);
 char **split_lines(char *buffer);
 char **get_tokens(char *line);
 
-int print_node(stack_t *node, int ascii_val);
-int print_nodes(stack_t *node, int ascii_val);
-
-
 void cleanup(void);
 void exit_on_malloc_fail(void *mem);
 void monty_exit(int EXIT_STATUS);
 
 stack_t *add_node_bot(stack_t **head, int n);
 stack_t *add_node_top(stack_t **head, int n);
-stack_t *peek_top();
-stack_t *peek_bot();
 
 
 
 void push(stack_t **stack, char *value);
-void stack_mode(void);
-void queue_mode(void);
-
 
 void pop(stack_t **stack, uint line_number);
 void pint(stack_t **stack, uint line_number);
 void pall(stack_t **stack, uint line_number);
 void pchar(stack_t **stack, uint line_number);
-void pstring(stack_t **stack, uint line_number);
+void pstr(stack_t **stack, uint line_number);
 void swap(stack_t **stack, uint line_number);
 void nop(stack_t **stack, uint line_number);
 void add(stack_t **stack, uint line_number);
@@ -95,7 +86,8 @@ void div_(stack_t **stack, uint line_number);
 void mod(stack_t **stack, uint line_number);
 void rotl(stack_t **stack, uint line_number);
 void rotr(stack_t **stack, uint line_number);
-
+void stack(stack_t **stack, uint line_number);
+void queue(stack_t **stack, uint line_number);
 
 extern state_t state;
 

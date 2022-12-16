@@ -1,6 +1,10 @@
 #include "monty.h"
 
-
+/**
+ * read_file - read the contents of a file
+ * @fd: file descriptor
+ * Return: a buffer containing file contents
+ */
 char *read_file(int fd)
 {
 	size_t file_size;
@@ -10,16 +14,20 @@ char *read_file(int fd)
 	fstat(fd, &filestat);
 	file_size = filestat.st_size;
 	buffer = malloc(file_size + 1);
+	exit_on_malloc_fail(buffer);
 	read(fd, buffer, file_size);
 	buffer[file_size] = '\0';
 	return (buffer);
 }
 
-
+/**
+ * split_lines - split a string by newlines
+ * @buffer: a string
+ * Return: an array of lines found in the string
+ */
 char **split_lines(char *buffer)
 {
-	uint num_lines = 0;
-	int i;
+	uint num_lines = 1, i;
 	char **lines, *line;
 	
 	for (i = 0; buffer[i]; i++)
@@ -27,8 +35,7 @@ char **split_lines(char *buffer)
 			num_lines++;
 	
 	lines = malloc(NPTRS(num_lines + 1));
-	if (!lines)
-		return (NULL);
+	exit_on_malloc_fail(lines);
 		
 	line = strtok(buffer, "\n");
 
@@ -41,13 +48,17 @@ char **split_lines(char *buffer)
 	return (lines);
 }
 
+/**
+ * get_tokens - split a string into tokens based on whitespace
+ * @lines: line to split
+ * Return: anull-terminated array of at most 2 tokens
+ */
 char **get_tokens(char *line)
 {
 	char **tokens, *opcode, *arg;
 	
 	tokens = malloc(NPTRS(3));
-	if (!tokens)
-		return (NULL);
+	exit_on_malloc_fail(tokens);
 	
 	tokens[0] = NULL;
 	tokens[1] = NULL;
@@ -77,5 +88,3 @@ char **get_tokens(char *line)
 	
 	return (tokens);
 }
-
- 
