@@ -1,2 +1,4 @@
-push 1
-add
+push 1 
+push     2
+
+push 

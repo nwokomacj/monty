@@ -46,6 +46,16 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, uint line_number);
 } instruction_t;
 
+/**
+ * struct state - global state
+ * @stack_mode: mode of insertion
+ * @stack: a list
+ * @length: length of stack
+ * @lineno: cutrent executing line number
+ * @buffer: a buffer
+ * @lines: an array of lines
+ * @tokens: an array of tokens
+ */
 typedef struct state
 {
 	int stack_mode;

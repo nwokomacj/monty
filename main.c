@@ -93,7 +93,7 @@ int main(int ac, char **av)
 		if (!handle_opcode(opcode, arg))
 		{
 			dprintf(2, "L%u: unknown instruction %s\n", state.lineno, opcode);
-			monty_exit(EXIT_FAILURE);	
+			monty_exit(EXIT_FAILURE);
 		}
 	}
 	monty_exit(EXIT_SUCCESS);
