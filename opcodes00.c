@@ -2,7 +2,6 @@
 
 void push(stack_t **stack, char *value)
 {
-	int num;
 	int i, throw = 0;
 
 	if (!value)
