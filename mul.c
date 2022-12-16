@@ -15,7 +15,7 @@ void mul(stack_t **stack, uint line_number)
     if (state.length < 2)
 
     {
-        printf(stderr, "L%d: can't mul, stack too short\n", line_number);
+        dprintf(2, "L%d: can't mul, stack too short\n", line_number);
         monty_exit(EXIT_FAILURE);
     }
 
@@ -24,7 +24,7 @@ void mul(stack_t **stack, uint line_number)
     second = first->next;
     sum = first->n * second->n;
     second->n = sum;
-    pop(stack, line_number)
+    pop(stack, line_number);
 
 }
 

@@ -27,3 +27,6 @@ void rotl(stack_t **stack, uint line_number)
  * 
 */
 void rotr(stack_t **stack, uint line_number)
+{
+
+}
