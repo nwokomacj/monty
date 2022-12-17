@@ -27,7 +27,7 @@ void div_(stack_t **stack, uint line_number)
 /**
  * mul - multiplies the top two elements of the stack
  * @stack: the stack
- * @line_line: line number
+ * @line_number: line number
  * Return: Nothing
  */
 void mul(stack_t **stack, uint line_number)

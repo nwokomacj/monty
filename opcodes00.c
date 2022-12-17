@@ -12,13 +12,15 @@ void push(stack_t **stack, char *value)
 
 	if (!value)
 		throw = 1;
-
-	for (i = 0; value && value[i]; i++)
-		if (!isdigit(value[i]))
-		{
-			throw = 1;
-			break;
-		}
+	else if (!isdigit(value[0]) && value[0] != '-')
+		throw = 1;
+	else
+		for (i = 1; value && value[i]; i++)
+			if (!isdigit(value[i]))
+			{
+				throw = 1;
+				break;
+			}
 	if (throw)
 	{
 

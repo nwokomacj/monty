@@ -1,6 +1,6 @@
 #include "monty.h"
 
-/*
+/**
  * add_node_top - add node to the top of the list (push)
  * @head: address of the head of the list
  * @n: data for the new node
@@ -23,7 +23,10 @@ stack_t *add_node_top(stack_t **head, int n)
 
 /**
  * add_node_bot - add node to the end of the list (enqueue)
- * @head: address of the head of the list           * @n: data for the new node                        * Return: the newly created node                   */
+ * @head: address of the head of the lis
+ * @n: data for the new node
+ * Return: the newly created node
+ */
 stack_t *add_node_bot(stack_t **head, int n)
 {
 	stack_t *tail, *new;

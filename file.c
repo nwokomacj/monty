@@ -20,16 +20,20 @@ char *read_file(int fd)
 	return (buffer);
 }
 
-int count_newlines(char *buffer) {
+/**
+ * count_newlines - counts newlines inside a buffer
+ * @buffer: a string buffer
+ * Return: the number of '\n' characters in the buffer
+ */
+int count_newlines(char *buffer)
+{
 	int count = 0;
 	char *p;
 
-	for (p = buffer; *p != '\0'; p++) {
-		if (*p == '\n') {
+	for (p = buffer; *p != '\0'; p++)
+		if (*p == '\n')
 			count++;
-		}
-	}
-    return count;
+	return (count);
 }
 
 /**
