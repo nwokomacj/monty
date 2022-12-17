@@ -118,6 +118,11 @@ void mod(stack_t **stack, uint line_number)
 		monty_exit(EXIT_FAILURE);
 	}
 	first = *stack;
+	if (first->n == 0)
+        {
+                dprintf(2, "L%u: division by zero\n", line_number);
+                monty_exit(EXIT_FAILURE);
+        }
 	second = first->next;
 	result = second->n % first->n;
 	second->n = result;
