@@ -19,6 +19,11 @@ void div_(stack_t **stack, uint line_number)
 
 	first = *stack;
 	second = first->next;
+	if (first->n == 0)
+	{
+		dprintf("L%d: division by zero\n", line_number);
+		monty_exit(EXIT_FAILURE);
+	}
 	result = second->n / first->n;
 	second->n = result;
 	pop(stack, line_number);
