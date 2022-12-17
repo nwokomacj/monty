@@ -13,7 +13,7 @@ void div_(stack_t **stack, uint line_number)
 
 	if (state.length < 2)
 	{
-		dprintf(2, "L%d: can't div, stack too short\n", line_number);
+		dprintf(2, "L%u: can't div, stack too short\n", line_number);
 		monty_exit(EXIT_FAILURE);
 	}
 
@@ -21,7 +21,7 @@ void div_(stack_t **stack, uint line_number)
 	second = first->next;
 	if (first->n == 0)
 	{
-		dprintf("L%d: division by zero\n", line_number);
+		dprintf(2, "L%u: division by zero\n", line_number);
 		monty_exit(EXIT_FAILURE);
 	}
 	result = second->n / first->n;
@@ -42,7 +42,7 @@ void mul(stack_t **stack, uint line_number)
 
 	if (state.length < 2)
 	{
-		dprintf(2, "L%d: can't mul, stack too short\n", line_number);
+		dprintf(2, "L%u: can't mul, stack too short\n", line_number);
 		monty_exit(EXIT_FAILURE);
 	}
 	first = *stack;
@@ -65,7 +65,7 @@ void add(stack_t **stack, uint line_number)
 
 	if (state.length < 2)
 	{
-		dprintf(2, "L%d: can't add, stack too short\n", line_number);
+		dprintf(2, "L%u: can't add, stack too short\n", line_number);
 		monty_exit(EXIT_FAILURE);
 	}
 	first = *stack;
@@ -89,7 +89,7 @@ void sub(stack_t **stack, uint line_number)
 
 	if (state.length < 2)
 	{
-		dprintf(2, "L%d: can't sub, stack too short\n", line_number);
+		dprintf(2, "L%u: can't sub, stack too short\n", line_number);
 		monty_exit(EXIT_FAILURE);
 	}
 
@@ -114,7 +114,7 @@ void mod(stack_t **stack, uint line_number)
 
 	if (state.length < 2)
 	{
-		dprintf(2, "L%d: can't add, stack too short\n", line_number);
+		dprintf(2, "L%u: can't add, stack too short\n", line_number);
 		monty_exit(EXIT_FAILURE);
 	}
 	first = *stack;
