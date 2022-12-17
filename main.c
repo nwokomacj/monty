@@ -80,6 +80,7 @@ int main(int ac, char **av)
 	buffer = read_file(fd);
 	close(fd);
 	lines = split_lines(buffer);
+	exit_on_malloc_fail(lines);
 	state.lines = lines;
 	state.buffer = buffer;
 	for (; lines[state.lineno - 1]; state.lineno++)

@@ -36,7 +36,7 @@ void cleanup(void)
  */
 void exit_on_malloc_fail(void *mem)
 {
-	if (mem == NULL && errno == ENOMEM)
+	if (mem == NULL)
 	{
 		dprintf(2, "Error: malloc failed\n");
 		monty_exit(EXIT_FAILURE);
