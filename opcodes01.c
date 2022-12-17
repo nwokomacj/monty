@@ -114,7 +114,7 @@ void mod(stack_t **stack, uint line_number)
 
 	if (state.length < 2)
 	{
-		dprintf(2, "L%u: can't add, stack too short\n", line_number);
+		dprintf(2, "L%u: can't mod, stack too short\n", line_number);
 		monty_exit(EXIT_FAILURE);
 	}
 	first = *stack;
