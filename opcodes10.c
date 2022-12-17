@@ -121,6 +121,6 @@ void rotr(stack_t **stack, uint line_number)
 	bot->prev = NULL;
 	temp->next = NULL;
 	top->prev = bot;
-	*stack = temp;
+	*stack = bot;
 }
 
